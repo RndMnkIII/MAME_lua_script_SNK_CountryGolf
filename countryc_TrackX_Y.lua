@@ -16,6 +16,7 @@ RETRIG_STOP = 0
 SCR = manager.machine.screens[":screen"]
 SCR_W = SCR.width
 SCR_H = SCR.height
+TRANSPARENCY_LV = 0X90
 frm_counter = 0
 print(emu.app_name() .. " " .. emu.app_version())
 print(string.format("SCR_W: %d SCR_H: %d", SCR_W, SCR_H))
@@ -41,10 +42,10 @@ function Draw_TrackballXY_box()
     if not manager.machine.paused then frm_counter = frm_counter + 1 end
 
 	SCR:draw_text(0, 0, string.format("Track1: %01d X:%03d Y:%03d", m_track_sel, m_track[m_track_sel].x, m_track[m_track_sel].y), 0xffffaa00) --in MAME the x,y order was reversed respect to the schematics
-	box_color = (SPR_TRANSPARENCY<<24) +  (200 << 16) + (100 << 8)
+	box_color = (TRANSPARENCY_LV<<24) +  (200 << 16) + (100 << 8)
 	SCR:draw_box(m_track[1].x-5, m_track[1].y-5, m_track[1].x+5,  m_track[1].y+5,box_color, box_color2)
 	SCR:draw_text(128, 0, string.format("Track2: %01d X:%03d Y:%03d", m_track_sel, m_track[m_track_sel].x, m_track[m_track_sel].y), 0xffaa00ff) --in MAME the x,y order was reversed respect to the schematics
-	box_color2 = (SPR_TRANSPARENCY<<24) + (200 << 8) + 100
+	box_color2 = (TRANSPARENCY_LV<<24) + (200 << 8) + 100
 	SCR:draw_box(m_track[2].x-5+128, m_track[2].y-5, m_track[2].x+5+128,  m_track[2].y+5,box_color2, box_color)
     return
 end
