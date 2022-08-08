@@ -41,10 +41,10 @@ trackYcb = SPRAM:install_read_tap(0xc200,0xc200,"trackY_CB", function (offset, d
 function Draw_TrackballXY_box()
     if not manager.machine.paused then frm_counter = frm_counter + 1 end
 
-	SCR:draw_text(0, 0, string.format("Track1: %01d X:%03d Y:%03d", m_track_sel, m_track[m_track_sel].x, m_track[m_track_sel].y), 0xffffaa00) --in MAME the x,y order was reversed respect to the schematics
+	SCR:draw_text(0, 0, string.format("Track1: %01d X:%03d Y:%03d", m_track_sel, m_track[1].x, m_track[1].y), 0xffffaa00) --in MAME the x,y order was reversed respect to the schematics
 	box_color = (TRANSPARENCY_LV<<24) +  (200 << 16) + (100 << 8)
 	SCR:draw_box(m_track[1].x-5, m_track[1].y-5, m_track[1].x+5,  m_track[1].y+5,box_color, box_color2)
-	SCR:draw_text(128, 0, string.format("Track2: %01d X:%03d Y:%03d", m_track_sel, m_track[m_track_sel].x, m_track[m_track_sel].y), 0xffaa00ff) --in MAME the x,y order was reversed respect to the schematics
+	SCR:draw_text(128, 0, string.format("Track2: %01d X:%03d Y:%03d", m_track_sel, m_track[2].x, m_track[2].y), 0xffaa00ff) --in MAME the x,y order was reversed respect to the schematics
 	box_color2 = (TRANSPARENCY_LV<<24) + (200 << 8) + 100
 	SCR:draw_box(m_track[2].x-5+128, m_track[2].y-5, m_track[2].x+5+128,  m_track[2].y+5,box_color2, box_color)
     return
